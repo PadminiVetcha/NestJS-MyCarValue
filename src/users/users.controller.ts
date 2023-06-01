@@ -47,6 +47,7 @@ export class UsersController {
     return user;
   }
 
+  //to signup with email and password
   @Post('/signup')
   async createUser(@Body() body: CreateUserDto, @Session() session: any) {
     const user = await this.authService.signup(body.email, body.password);
@@ -54,6 +55,7 @@ export class UsersController {
     return user;
   }
 
+  //to signin with email and password
   @Post('/signin')
   async signIn(@Body() body: CreateUserDto, @Session() session: any) {
     const user = await this.authService.signin(body.email, body.password);
@@ -61,6 +63,7 @@ export class UsersController {
     return user;
   }
 
+  // signout
   @Post('/signout')
   signOut(@Session() session: any) {
     session.userId = null;
@@ -76,16 +79,19 @@ export class UsersController {
     return user;
   }
 
+  //get all the users with given mail id
   @Get()
   findAllUsers(@Query('email') email: string) {
     return this.usersService.find(email);
   }
 
+  //update the user with given id and updated body
   @Patch('/:id')
   updateUser(@Param('id') id: string, @Body() body: UpdateUserDto) {
     return this.usersService.update(parseInt(id), body);
   }
 
+  //delete a user with mentioned id
   @Delete('/:id')
   removeUser(@Param('id') id: string) {
     return this.usersService.remove(parseInt(id));

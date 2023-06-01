@@ -17,6 +17,10 @@ export function Serialize(dto: ClassConstructor) {
   return UseInterceptors(new SerializeInterceptor(dto));
 }
 
+/**
+ * Interceptors can be used to intercept all the incoming requests and outgoing responses.
+ */
+
 export class SerializeInterceptor implements NestInterceptor {
   constructor(private dto: any) {}
 
