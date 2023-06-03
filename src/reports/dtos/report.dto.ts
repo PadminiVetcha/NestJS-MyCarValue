@@ -1,5 +1,5 @@
 import { Expose, Transform } from 'class-transformer';
-import { User } from 'src/users/user.entity';
+import { User } from '../../users/user.entity';
 
 export class ReportDto {
   @Expose()
@@ -25,6 +25,9 @@ export class ReportDto {
 
   @Expose()
   mileage: number;
+
+  @Expose()
+  approved: boolean;
 
   @Transform(({ obj }) => obj.user.id)
   // obj here refers to original reprt entity which has complete user instance

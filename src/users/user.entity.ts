@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
   OneToMany, //Association type wrt User to Reports
 } from 'typeorm';
-import { Report } from 'src/reports/report.entity';
+import { Report } from '../reports/report.entity';
 
 @Entity()
 export class User {
@@ -19,6 +19,9 @@ export class User {
 
   @Column()
   password: string;
+
+  @Column({ default: true })
+  admin: boolean;
 
   @OneToMany(() => Report, (report) => report.user)
   reports: Report[];

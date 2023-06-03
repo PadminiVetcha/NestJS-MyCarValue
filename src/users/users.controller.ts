@@ -44,6 +44,7 @@ export class UsersController {
   @Get('/whoami')
   @UseGuards(AuthGuard)
   whoAmI(@CurrentUser() user: User) {
+    //console.log('User is', user);
     return user;
   }
 
